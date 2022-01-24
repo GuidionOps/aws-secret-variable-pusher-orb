@@ -14,6 +14,5 @@ usage:
             aws-secret-access-key: AWS_DEFAULT_REGION
             aws-region: AWS_DEFAULT_REGION
         - aws-secret-variable-pusher/push-variable:
-            aws_secret_name:
             aws_kms_key:
             circleci_variable:
