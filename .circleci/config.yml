@@ -1,11 +1,12 @@
 version: 2.1
 
 orbs:
-  # Replace this with your own!
-  aws-secret-variable-pusher: guidionops/aws-secret-variable-pusher@<<pipeline.parameters.dev-orb-version>>
+  aws-secret-variable-pusher: guidionops/aws-secret-variable-pusher-orb@<<pipeline.parameters.dev-orb-version>>
+  aws-cli: circleci/aws-cli@1.3
   orb-tools: circleci/orb-tools@10.0
-  bats: circleci/bats@1.0
+  # bats: circleci/bats@1.0
   shellcheck: circleci/shellcheck@2.0
+  jq: circleci/jq@2.2.0
 
 # Pipeline Parameters
 ## These parameters are used internally by orb-tools. Skip to the Jobs section.
@@ -32,7 +33,7 @@ jobs:
       # "greet" is a sample command packaged with this orb config.
       # This sample integration test will run as long as the greet command exists. Once you remove the greet command you should remove this line.
       # Push new changes first, before adding new tests to your config.
-      - aws-secret-variable-pusher/greet
+      # - aws-secret-syncer/greet
 
 workflows:
   # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
@@ -46,8 +47,8 @@ workflows:
           dir: ./src/scripts
           exclude: SC2148
       # optional: Run BATS tests against your scripts
-      - bats/run:
-          path: ./src/tests
+      # - bats/run:
+          # path: ./src/tests
       # Publish development version(s) of the orb.
       - orb-tools/publish-dev:
           orb-name: guidionops/aws-secret-variable-pusher
@@ -55,7 +56,7 @@ workflows:
           requires:
             - orb-tools/lint
             - orb-tools/pack
-            - bats/run
+            # - bats/run
             - shellcheck/check
       # Trigger an integration workflow to test the
       # dev:${CIRCLE_SHA1:0:7} version of your orb

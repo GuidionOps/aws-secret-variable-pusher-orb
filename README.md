@@ -1,6 +1,6 @@
 # Orb Project Template
 
-[![CircleCI Build Status](https://circleci.com/gh/GuidionOps/aws-secret-variable-pusher-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/GuidionOps/aws-secret-variable-pusher-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/guidionops/aws-secret-variable-pusher.svg)](https://circleci.com/orbs/registry/orb/guidionops/aws-secret-variable-pusher) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/GuidionOps/aws-secret-variable-pusher-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
+[![CircleCI Build Status](https://circleci.com/gh/GuidionOps/aws-secret-variable-pusher-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/GuidionOps/aws-secret-variable-pusher-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/guidionops/aws-secret-variable-pusher-orb.svg)](https://circleci.com/orbs/registry/orb/guidionops/aws-secret-variable-pusher-orb) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/GuidionOps/aws-secret-variable-pusher-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
 
 
