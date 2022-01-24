@@ -1,7 +1,7 @@
 # Runs prior to every test
 setup() {
     # Load our script file.
-    source ./src/scripts/greet.sh
+    source ./src/scripts/aws-secret-variable-pusher.sh
 }
 
 @test '1: Greet the world' {

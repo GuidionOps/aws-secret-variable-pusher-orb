@@ -1,13 +1,19 @@
-description: >
-  Sample example description.
-# Provide a use-case based example for using this orb.
-# Everything in the `usage` section will be displayed in the orb registry.
-# Comments are not retained.
+description: Pushes CircleCI variables to the AWS secrets-manager
 usage:
   version: 2.1
   orbs:
-    <orb-name>: <namespace>/<orb-name>@1.2.3
-  workflows:
-    use-my-orb:
-      jobs:
-        - <orb-name>/<job-name>
+    aws-cli: circleci/aws-cli@1.3
+    aws-secret-variable-pusher: guidionops/aws-secret-variable-pusher@0.0.1
+  jobs:
+    update-tag:
+      docker:
+        - image: cimg/python:3.9.1
+      steps:
+        - aws-cli/setup:
+            aws-access-key-id: AWS_SECRET_ACCESS_KEY
+            aws-secret-access-key: AWS_DEFAULT_REGION
+            aws-region: AWS_DEFAULT_REGION
+        - aws-secret-variable-pusher/push-variable:
+            aws_secret_name:
+            aws_kms_key:
+            circleci_variable:
