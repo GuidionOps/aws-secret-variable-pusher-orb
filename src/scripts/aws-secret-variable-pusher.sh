@@ -7,6 +7,9 @@ if [[ $(aws secretsmanager describe-secret --secret-id "${CIRCLE_PROJECT_REPONAM
     aws secretsmanager create-secret --name "${CIRCLE_PROJECT_REPONAME}-${PARAM_AWS_ENVIROMENT}-${i}" --secret-string $"${!i}" --kms-key-id "${PARAM_AWS_KMS_KEY}"
 
     aws secretsmanager tag-resource --secret-id "${CIRCLE_PROJECT_REPONAME}-${PARAM_AWS_ENVIROMENT}-${i}" --tags Key=Enviroment,Value="${AWS_ACCOUNT_NAME}"
+    aws secretsmanager tag-resource --secret-id "${CIRCLE_PROJECT_REPONAME}-${PARAM_AWS_ENVIROMENT}-${i}" --tags Key=Owner,Value="${CIRCLE_PROJECT_USERNAME}"
+    aws secretsmanager tag-resource --secret-id "${CIRCLE_PROJECT_REPONAME}-${PARAM_AWS_ENVIROMENT}-${i}" --tags Key=GitRepository,Value="${CIRCLE_PROJECT_REPONAME}"
+    aws secretsmanager tag-resource --secret-id "${CIRCLE_PROJECT_REPONAME}-${PARAM_AWS_ENVIROMENT}-${i}" --tags Key=DeploymentTool,Value="CircleCI"
 
     continue
 fi
@@ -22,5 +25,9 @@ else
     aws secretsmanager update-secret --secret-id "${CIRCLE_PROJECT_REPONAME}-${PARAM_AWS_ENVIROMENT}-${i}" --secret-string $"${!i}" --kms-key-id "${PARAM_AWS_KMS_KEY}"
 
     aws secretsmanager tag-resource --secret-id "${CIRCLE_PROJECT_REPONAME}-${PARAM_AWS_ENVIROMENT}-${i}" --tags Key=Enviroment,Value="${AWS_ACCOUNT_NAME}"
+    aws secretsmanager tag-resource --secret-id "${CIRCLE_PROJECT_REPONAME}-${PARAM_AWS_ENVIROMENT}-${i}" --tags Key=Owner,Value="${CIRCLE_PROJECT_USERNAME}"
+    aws secretsmanager tag-resource --secret-id "${CIRCLE_PROJECT_REPONAME}-${PARAM_AWS_ENVIROMENT}-${i}" --tags Key=GitRepository,Value="${CIRCLE_PROJECT_REPONAME}"
+    aws secretsmanager tag-resource --secret-id "${CIRCLE_PROJECT_REPONAME}-${PARAM_AWS_ENVIROMENT}-${i}" --tags Key=DeploymentTool,Value="CircleCI"
+
 fi
 done
