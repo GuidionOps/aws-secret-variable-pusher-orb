@@ -6,7 +6,7 @@ if [[ $(aws secretsmanager describe-secret --secret-id "${CIRCLE_PROJECT_REPONAM
     echo "AWS secret not found"
     aws secretsmanager create-secret --name "${CIRCLE_PROJECT_REPONAME}-${PARAM_AWS_ENVIROMENT}-${i}" --secret-string $"${!i}" --kms-key-id "${PARAM_AWS_KMS_KEY}"
 
-    aws secretsmanager tag-resource --secret-id "${CIRCLE_PROJECT_REPONAME}-${PARAM_AWS_ENVIROMENT}-${i}" --tags Key=Enviroment,Value=${AWS_ACCOUNT_NAME}
+    aws secretsmanager tag-resource --secret-id "${CIRCLE_PROJECT_REPONAME}-${PARAM_AWS_ENVIROMENT}-${i}" --tags Key=Enviroment,Value="${AWS_ACCOUNT_NAME}"
 
     continue
 fi
