@@ -1,5 +1,8 @@
 description: Pushes CircleCI variables to the AWS secrets-manager
 parameters:
+  aws_enviroment:
+    type: string
+    default: ''
   aws_kms_key:
     type: string
     default: ''
@@ -11,5 +14,6 @@ steps:
       name: Pushes CircleCI variables to the AWS secrets-manager
       command: << include(scripts/aws-secret-variable-pusher.sh) >>
       environment:
+        PARAM_AWS_ENVIROMENT: << parameters.aws_enviroment >>
         PARAM_AWS_KMS_KEY: << parameters.aws_kms_key >>
         PARAM_CIRCLECI_VARIABLE: << parameters.circleci_variable >>
