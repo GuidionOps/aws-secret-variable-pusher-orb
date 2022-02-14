@@ -3,7 +3,7 @@ parameters:
   aws_enviroment:
     type: string
     default: ''
-  aws_kms_key:
+  aws_kms_key_id:
     type: string
     default: ''
   circleci_variable:
@@ -15,5 +15,5 @@ steps:
       command: << include(scripts/aws-secret-variable-pusher.sh) >>
       environment:
         PARAM_AWS_ENVIROMENT: << parameters.aws_enviroment >>
-        PARAM_AWS_KMS_KEY: << parameters.aws_kms_key >>
+        PARAM_AWS_KMS_KEY_ID: << parameters.aws_kms_key_id >>
         PARAM_CIRCLECI_VARIABLE: << parameters.circleci_variable >>
